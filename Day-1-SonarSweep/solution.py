@@ -3,7 +3,6 @@ import csv
 with open("input.csv","r") as data:
     parsed_data = [int(i[0]) for i in csv.reader(data)]
 
-
 # Part 1: Check if next value in list is larger than previous.
 def sumChecker(array: list):
     counter = 0
