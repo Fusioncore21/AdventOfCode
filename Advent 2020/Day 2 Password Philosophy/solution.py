@@ -15,16 +15,20 @@ for index,inp in enumerate(pData):
 def Part1(array):
     validPasswords = 0
     for policy in array:
-        print(policy)
         countedLetters = int(policy[2].count(policy[1]))
-        min = int(policy[0][0])
-        max = int(policy[0][1])
+        min, max = int(policy[0][0]), int(policy[0][1])
         if countedLetters >= min and countedLetters <= max:
             validPasswords += 1
     return validPasswords
 
 def Part2(array):
-    ...
+    validPasswords = 0
+    for policy in array:
+        reqLetter = policy[1]
+        pos1, pos2 = policy[2][int(policy[0][0])-1], policy[2][int(policy[0][1])-1]
+        if (pos1 == reqLetter and pos2 != reqLetter) or (pos2 == reqLetter and pos1 != reqLetter):
+            validPasswords += 1
+    return validPasswords
 
 print(f"Part 1: {Part1(pData)}")
 print(f"Part 2: {Part2(pData)}")
