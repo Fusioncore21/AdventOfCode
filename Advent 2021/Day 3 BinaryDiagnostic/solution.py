@@ -1,5 +1,6 @@
 from csv import reader
 from typing import Counter
+from operator import itemgetter
 
 def parse_data():
     with open("input.csv","r") as f:
@@ -48,11 +49,26 @@ def part2b(O2Array: list, CO2Array: list):
         CO2Array = list(filter(CO2Filter,CO2Array)) or CO2Array
     return int(O2Array[0],2) * int(CO2Array[0],2)
 
+# Discord User eivl's solution using sorting the O2Filter result so the wanted result is always first
+def part2c(O2Array: list, CO2Array: list):
+    for Row in range(12):
+        try:
+            O2Filter = Counter([i[Row] for i in O2Array]).most_common(2)
+            O2Filter.sort(key=itemgetter(1, 0), reverse=True)
+            CO2Filter = Counter([i[Row] for i in CO2Array]).most_common(2)
+        except IndexError:
+            continue
 
+        O2Array = list(filter(lambda a: a[Row] == O2Filter[0][0], O2Array))
+        CO2Array = list(filter(lambda a: a[Row] == CO2Filter[-1][0], CO2Array))
+    o2, = O2Array
+    co2, = CO2Array
+    return int(o2, base=2) * int(co2, base=2)
 
 def main():
     data = parse_data()
     print(f"Part 1 Answer: {part1(data)}")
     print(f"Part 2a Answer: {part2a(data, data)}")
     print(f"Part 2b Answer: {part2b(data, data)}")
+    print(f"Part 2c Answer: {part2b(data, data)}")
 main()
