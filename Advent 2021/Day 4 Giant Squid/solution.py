@@ -26,13 +26,15 @@ def part1(array: list, numbers: list):
     for number in numbers:
         for index1,bingoCard in enumerate(array,0):
             for index2, row in enumerate(bingoCard,0): 
-                row = list(filter(lambda a: a!=number, row))
+                row = [i for i in row if i!=number]
                 # Check if the filter has caused a Bingo
                 if not bool(row): return sum([sum(list(map(int,a))) for a in bingoCard]) * int(number)
                 # If the row isn't bingo'd, what about the columns?
+
                 array[index1][index2] = row
             #save_data(array)
             #input()
+
 
 def part2():
     ...
