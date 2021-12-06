@@ -34,7 +34,6 @@ def part1(): # Solution using a class
 def part2(counter: dict): # As the algorithm basically dies due to having such a long list, lets use a dict
     for day in range(256):
         temp_day = counter.copy()
-        print([temp_day[i] for i in range(9)])
         for i in range(8,-1,-1):
             if i:
                 counter[i-1] += temp_day[i]
@@ -48,7 +47,7 @@ def part2(counter: dict): # As the algorithm basically dies due to having such a
 def main():
     a = getData()
     print(a)
-    #print(f"Part 1: {part1()}")
+    print(f"Part 1: {part1()}")
     print(f"Part 2: {part2(a)}")
 
 main()
