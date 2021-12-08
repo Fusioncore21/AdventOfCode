@@ -21,7 +21,7 @@ def part2(array: list):
     window = int(len(array)*.1)
     m = round(mean(array))
     minim = sum_cost(array,m)
-
+    
     for i in range(m-window,m+window):
         if (temp := sum_cost(array,i)) < minim:
             minim = temp
