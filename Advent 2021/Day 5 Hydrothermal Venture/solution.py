@@ -3,7 +3,8 @@ from csv import reader
 def getData():
     with open("testinput.csv", "r") as f:
         data = list(reader(f))
-        data = [i[0].split(" -> ") for i in data]
+        for i in range(len(data)):
+            ...
         return data
 
 def main():
