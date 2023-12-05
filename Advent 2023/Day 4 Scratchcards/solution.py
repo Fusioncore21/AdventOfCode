@@ -13,10 +13,10 @@ def part1_1line(file):
 
 class Card():
     def __init__(self, details):
-        self.
+        pass
 
 def part2(file):
-    
+    pass
 
 with open("./Advent 2023/Day 4 Scratchcards/input.txt","r") as raw:
     File = [row.rstrip("\n") for row in raw.readlines()]
